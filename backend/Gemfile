@@ -1,5 +1,9 @@
 source "https://rubygems.org"
 
+
+
+gem  "rack-cors"
+
 ruby "3.3.8"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
