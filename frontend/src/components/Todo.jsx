@@ -1,12 +1,24 @@
 import { FiDelete } from "react-icons/fi";
+import { useState } from "react";
+import { update_todo } from "../api/endpoints";
 
-const Todo = ({todo_list}) => {
+const Todo = ({id, todo_name, completed, deleteTodo}) => {
+  const [isChecked, setChecked] = useState(completed)
+
+  const handleDelete = async () => {
+    await deleteTodo(id);
+  }
+  const handleComplete = async () => {
+     update_todo(id, !isChecked);
+     setChecked(!isChecked)
+
+  }
   return (
     <div className="todo">
       <div className="todo-container">
-        <input type="checkbox" />
-        <h3>{todo_list}</h3>
-        <FiDelete size="20px" />
+        <input checked={isChecked} onClick={handleComplete} type="checkbox" />
+        <h3>{todo_name}</h3>
+        <FiDelete onClick={handleDelete} size="20px" />
       </div>
     </div>
   );
