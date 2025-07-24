@@ -35,7 +35,9 @@ class Api::TodosController < ApplicationController
 
   # DELETE /todos/1
   def destroy
-    @todo.destroy!
+     todo = Todo.find(params[:id])
+  todo.destroy
+  head :no_content
   end
 
   private
